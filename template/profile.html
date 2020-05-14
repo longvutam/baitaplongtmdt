@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+
+{% block title %}Điều chỉnh thông tin{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Thông tin người dùng</h1>
+        <p>Tài khoản: <strong>{{ user.username }}</strong></p>
+        <p>Email: {{ user.email }}</p>
+        <p>Last login: {{ user.last_login }}</p>
+        <p>Ngày đăng kí: {{ user.date_joined }}</p>
+        <p><a href="{% url 'logout' %}" type="button" class="btn btn-danger">Thoát</a></p>
+    </div>
+{% endblock %}

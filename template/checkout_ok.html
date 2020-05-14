@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %} {% load static %}
+{% block title %}Checkout{% endblock %}
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/checkout.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/checkout_responsive.css' %}">
+{% endblock %}
+{% block content %}
+<div class="home">
+    <div class="home_container">
+        <div class="home_background"><img src="{% static 'images/cart.jpg' %}" alt=""></div>
+        <div class="home_content_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="home_content">
+                            <div class="breadcrumbs">
+                                <ul>
+                                    <li><a href="/">Trang chủ</a></li>
+                                    <li>Thanh toán thành công</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = "container">
+    <h1>Đơn hàng đặt thành công</h1>
+    <p>cảm ơn quý khách đã đặt hàng cho shop</p>
+</div>
+
+{% endblock %}

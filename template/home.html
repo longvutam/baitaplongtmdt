@@ -1,0 +1,219 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %} 
+<!-- Home -->
+<div class="home">
+    <div class="home_slider_container">
+
+        <!-- Home Slider -->
+        <div class="owl-carousel owl-theme home_slider">
+
+            <!-- Slider Item -->
+            <div class="owl-item home_slider_item">
+                <div class="home_slider_background"><img src="{% static 'images/home_slider_1.jpg' %}" alt=""></div>
+                <div class="home_slider_content_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="home_slider_content" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
+                                    <div class="home_slider_title">Shop bán hàng chuyên nghiệp</div>
+                                    <div class="home_slider_subtitle">Chất lượng hàng đầu</div>
+                                    <div class="button button_light home_button"><a href="{% url 'cart' %}">Shop Now</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Item -->
+            <div class="owl-item home_slider_item">
+                <div class="home_slider_background"><img src="{% static 'images/home_slider_1.jpg' %}" alt=""></div>
+                <div class="home_slider_content_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="home_slider_content" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
+                                    <div class="home_slider_title">Shop bán hàng chuyên nghiệp</div>
+                                    <div class="home_slider_subtitle">Chất lượng hàng đầu</div>
+                                    <div class="button button_light home_button"><a href="{% url 'cart' %}">Shop Now</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Item -->
+            <div class="owl-item home_slider_item">
+                <div class="home_slider_background"><img src="{% static 'images/home_slider_1.jpg' %}" alt=""></div>
+                <div class="home_slider_content_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="home_slider_content" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
+                                    <div class="home_slider_title">Shop bán hàng chuyên nghiệp</div>
+                                    <div class="home_slider_subtitle">Chất lượng hàng đầu</div>
+                                    <div class="button button_light home_button"><a href="{% url 'cart' %}">Shop Now</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Home Slider Dots -->
+
+        <div class="home_slider_dots_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="home_slider_dots">
+                            <ul id="home_slider_custom_dots" class="home_slider_custom_dots">
+                                <li class="home_slider_custom_dot active">01.</li>
+                                <li class="home_slider_custom_dot">02.</li>
+                                <li class="home_slider_custom_dot">03.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Ads -->
+<div class="avds">
+    <div class="avds_container d-flex flex-lg-row flex-column align-items-start justify-content-between">
+        <div class="avds_small">
+            <img class="avds_background" src="{% static 'images/avds_small.jpg' %}" alt="">
+            <div class="avds_small_inner">
+                <div class="avds_discount_container">
+                    <img src="{% static 'images/discount.png' %}" alt="">
+                    <div>
+                        <div class="avds_discount">
+                            <div>20<span>%</span></div>
+                            <div>Discount</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="avds_small_content">
+                    <div class="avds_title">Smart Phones</div>
+                    <div class="avds_link"><a href="/">See More</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="avds_large">
+            <img class="avds_background" src="{% static 'images/avds_large.jpg' %}" alt="">
+            <div class="avds_large_container">
+                <div class="avds_large_content">
+                    <div class="avds_title">Professional Cameras</div>
+                    <div class="avds_text">Thiết bị với độ phân giải cao, hình ảnh sắc né, chế độ chụp ảnh chuyên nghiệp</div>
+                    <div class="avds_link avds_link_large"><a href="/">See More</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Products -->
+<div class="products">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="product_grid">
+                    {% for product in objs_list %}
+                    <div class="product">
+                        <div class="product_image"><img src= '..\media\{{ product.img }}' alt=""></div>
+                        <div class="product_content">
+                            <div class="product_title"><a href="{% url 'product'  product.id%}">{{ product.name }}</a></div>
+                            <div class="product_price">{{ product.price }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Ad -->
+<div class="avds_xl">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="avds_xl_container clearfix">
+                    <img class="avds_xl_background" src="{% static 'images/avds_xl.jpg'%}" alt="">
+                    <div class="avds_xl_content">
+                        <div class="avds_title">Thiết bị cho tương lai</div>
+                        <div class="avds_text">Sản phẩm đạt chuẩn đáp ứng nhu cầu của mọi người</div>
+                        <div class="avds_link avds_xl_link"><a href="/">See More</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="icon_boxes">
+    <div class="container">
+        <div class="row icon_box_row">
+            <div class="col-lg-4 icon_box_col">
+                <div class="icon_box">
+                    <div class="icon_box_image"><img src="{% static 'images/icon_1.svg' %}" alt=""></div>
+                    <div class="icon_box_title">Free Shipping Worldwide</div>
+                    <div class="icon_box_text">
+                        <p>Miễn phí ship toàn quốc</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 icon_box_col">
+                <div class="icon_box">
+                    <div class="icon_box_image"><img src="{% static 'images/icon_2.svg' %}" alt=""></div>
+                    <div class="icon_box_title">Free Returns</div>
+                    <div class="icon_box_text">
+                        <p>Miễn phí đổi trả khi lỗi do nhà sản xuất</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 icon_box_col">
+                <div class="icon_box">
+                    <div class="icon_box_image"><img src="{% static 'images/icon_3.svg' %}" alt=""></div>
+                    <div class="icon_box_title">24h Fast Support</div>
+                    <div class="icon_box_text">
+                        <p>Nhân viên nhiệt tình hỗ trợ 24/24</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Newsletter -->
+
+<div class="newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="newsletter_border"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="newsletter_content text-center">
+                    <div class="newsletter_title">Đăng kí để nhận thông tin sẩn phẩm mới</div>
+                    <div class="newsletter_text">
+                        <p>Những sản phẩm mới hot đang đón chờ bạn</p>
+                    </div>
+                    <div class="newsletter_form_container">
+                        <form action="#" id="newsletter_form" class="newsletter_form">
+                            <input type="email" class="newsletter_input" required="required">
+                            <button class="newsletter_button trans_200"><span>Subscribe</span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
