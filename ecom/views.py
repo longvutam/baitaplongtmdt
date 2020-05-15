@@ -41,7 +41,8 @@ def add2Cart(request, product_id):
 
 def cart(request):
     try:
-        transaction = Transaction.objects.get(firstname = request.user)
+        transaction_qs = Transaction.objects.filter(firstname = request.user)
+        transaction = transaction_qs[0]
         orders = Order.objects.filter(transaction = transaction)
         tong = 0
         for i in orders:
@@ -69,7 +70,8 @@ class checkoutView(UpdateView):
         from pprint import pprint; pprint(form.cleaned_data)
         return super().form_valid(form)
     def get_object(self):
-        transaction = Transaction.objects.all().get(firstname = self.request.user)
+        transaction_qs = Transaction.objects.filter(firstname = request.user)
+        transaction = transaction_qs[0]
         return transaction
         
 def checkout_ok(request):
