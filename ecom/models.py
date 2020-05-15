@@ -15,7 +15,6 @@ class Transaction(models.Model):
     lastname = models.CharField("last name", max_length=20)
     address = models.TextField("Address", max_length=300)
     phone = models.CharField("Phone Number", max_length=10)
-    id_trans = models.IntegerField("id_trans")
     message = models.TextField("Message", max_length=300)
     Order = models.ManyToManyField(Product, through='Order')
     def __str__(self):

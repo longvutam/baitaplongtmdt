@@ -30,19 +30,18 @@ def product(request, product_id):
 
 def add2Cart(request, product_id):
     product = Product.objects.get(pk = product_id)
-    transaction_qs = Transaction.objects.filter(id_trans = request.user.id)
+    transaction_qs = Transaction.objects.filter(firstname = request.user)
     if(transaction_qs.exists()):
         transaction = transaction_qs[0]
         order = Order.objects.create(product = product,transaction = transaction, priceOrder = product.price)
     else:    
-        transaction = Transaction.objects.create(id_trans = request.user.id)
+        transaction = Transaction.objects.create(firstname = request.user)
         order = Order.objects.create(product = product,transaction = transaction, priceOrder = product.price)
     return redirect("home")
 
 def cart(request):
     try:
-        transaction_qs = Transaction.objects.filter(id_trans = request.user.id )
-        transaction = transaction_qs[0]
+        transaction = Transaction.objects.get(firstname = request.user)
         orders = Order.objects.filter(transaction = transaction)
         tong = 0
         for i in orders:
@@ -56,8 +55,7 @@ def cart(request):
         raise Http404("Product does not exist")
 
 def removeCart(request):
-    transaction_qs = Transaction.objects.filter(id_trans = request.user.id)
-    transaction = transaction_qs[0]
+    transaction = Transaction.objects.get(firstname = request.user)
     orders = Order.objects.filter(transaction = transaction)
     orders.all().delete()
     return redirect('cart')
@@ -70,9 +68,8 @@ class checkoutView(UpdateView):
         from pprint import pprint; pprint(form.cleaned_data)
         return super().form_valid(form)
     def get_object(self):
-        transaction_qs = Transaction.objects.filter(id_trans = self.request.user.id )
-        transaction = transaction_qs[0]
-        return transaction;
+        transaction = Transaction.objects.all().filter(firstname = self.request.user)
+        return get_object_or_404(transaction)
         
 def checkout_ok(request):
     return render(request, 'checkout_ok.html')
