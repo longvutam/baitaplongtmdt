@@ -70,7 +70,7 @@ class checkoutView(UpdateView):
         from pprint import pprint; pprint(form.cleaned_data)
         return super().form_valid(form)
     def get_object(self):
-        transaction_qs = Transaction.objects.filter(firstname = request.user)
+        transaction_qs = Transaction.objects.filter(firstname = self.request.user)
         transaction = transaction_qs[0]
         return transaction
         
