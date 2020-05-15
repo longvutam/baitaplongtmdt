@@ -37,7 +37,7 @@ def add2Cart(request, product_id):
     else:    
         transaction = Transaction.objects.create(firstname = request.user)
         order = Order.objects.create(product = product,transaction = transaction, priceOrder = product.price)
-    return redirect("home")
+    return redirect("cart")
 
 def cart(request):
     try:
