@@ -1,29 +1,33 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block title %}Đăng nhập{% endblock %}
 
-{% block link %}
-<link rel="stylesheet" href="{% static 'CSS/1.css' %}">
-<link rel="stylesheet" href="{% static 'CSS/all.css' %}">
-<link rel="stylesheet" href="{% static 'CSS/2.css' %}">
-<link rel="stylesheet" href="{% static 'CSS/3.css' %}">
-{% endblock %}
 
-{% block main %}
-<div class="to">
-    <form class="form" method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <h2>Đăng nhập</h2>
-        <i class="fab fa-app-store-ios"></i>
-        <label style="margin-left: 0px;">Tên tài khoản</label>
-        <p>{{ form.username }}</p>
-        <label style="margin-left: 0px;">Mật khẩu</label>
-        <p>{{ form.password }}</p>
-        <p><a href="{% url 'password_reset' %}">Quên mật khẩu</a></p>
-        {% for error in form.errors %}
-            <small style="color: red">Sai nhập lại</small>
-        {% endfor %}
-        <input id="submit" type="submit" value="Đăng nhập">
-    </form>
+{% block user %}
+<div class="newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+               <form class="form" method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <h2>Đăng nhập</h2>
+                    <i class="fab fa-app-store-ios"></i>
+                    <label style="margin-left: 0px;">Tên tài khoản</label>
+                    <p>{{ form.username }}</p>
+                    <label style="margin-left: 0px;">Mật khẩu</label>
+                    <p>{{ form.password }}</p>
+                    <p><a href="{% url 'password_reset' %}">Quên mật khẩu</a></p>
+                    {% for error in form.errors %}
+                    <small style="color: red">Sai nhập lại</small>
+                    {% endfor %}
+                    <input id="submit" type="submit" value="Đăng nhập">
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
+
 {% endblock %}
