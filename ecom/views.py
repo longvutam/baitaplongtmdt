@@ -73,15 +73,6 @@ class checkoutView(UpdateView):
         transaction_qs = Transaction.objects.filter(id_trans = self.request.user.id )
         transaction = transaction_qs[0]
         return transaction;
-    # def get_initial(self):
-    #     transaction = Transaction.objects.get(id_trans = self.request.user.id )
-    #     return {
-    #         'lastname':transaction.lastname,
-    #         'firstname':transaction.firstname,
-    #         'address':transaction.address,
-    #         'phone':transaction.phone,
-    #         'message':transaction.message,
-    #     }
         
 def checkout_ok(request):
     return render(request, 'checkout_ok.html')
