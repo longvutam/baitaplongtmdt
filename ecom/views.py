@@ -41,7 +41,8 @@ def add2Cart(request, product_id):
 
 def cart(request):
     try:
-        transaction = Transaction.objects.get(firstname = request.user)
+        transaction_qs = Transaction.objects.filter(firstname = request.user)
+        transaction = transaction_qs[0]
         orders = Order.objects.filter(transaction = transaction)
         tong = 0
         for i in orders:
@@ -55,7 +56,8 @@ def cart(request):
         raise Http404("Product does not exist")
 
 def removeCart(request):
-    transaction = Transaction.objects.get(firstname = request.user)
+    transaction_qs = Transaction.objects.filter(firstname = request.user)
+    transaction = transaction_qs[0]
     orders = Order.objects.filter(transaction = transaction)
     orders.all().delete()
     return redirect('cart')
@@ -68,8 +70,9 @@ class checkoutView(UpdateView):
         from pprint import pprint; pprint(form.cleaned_data)
         return super().form_valid(form)
     def get_object(self):
-        transaction = Transaction.objects.all().filter(firstname = self.request.user)
-        return get_object_or_404(transaction)
+        transaction_qs = Transaction.objects.all().filter(firstname = self.request.user)
+        transaction = transaction_qs[0]
+        return transaction
         
 def checkout_ok(request):
     return render(request, 'checkout_ok.html')
