@@ -25,11 +25,8 @@ SECRET_KEY = 'o2u-@z%=1(!*opu^a+mah7hd49&gv(x09u!7$k!pdioyk1vo-+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
-ALLOWED_HOSTS = [longvutam.pythonanywhere.com,]
-=======
-ALLOWED_HOSTS = ['longvutam.pythonanywhere.com']
->>>>>>> 1e1776b74115a4c607b5c9747720bd9510ddecf2
+
+ALLOWED_HOSTS = ['longvutam.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
