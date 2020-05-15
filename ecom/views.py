@@ -72,7 +72,7 @@ class checkoutView(UpdateView):
     def get_object(self):
         transaction_qs = Transaction.objects.filter(id_trans = self.request.user.id )
         transaction = transaction_qs[0]
-        return transaction
+        return transaction;
     # def get_initial(self):
     #     transaction = Transaction.objects.get(id_trans = self.request.user.id )
     #     return {
