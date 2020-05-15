@@ -3,22 +3,22 @@
 {% block title %}Đăng kí tài khoản{% endblock title %}
 
 {% block user %}
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <form class="form" method="post">
-                    {% csrf_token %}
-                    <h2>Đăng kí</h2>
-                    {% for field in form %}
-                    <label>{{ field.label_tag }}</label>
-                    <p>{{ field }}</p>
-                    {% for error in field.errors %}
-                    <small style="color: red">{{ error }}</small>
-                    {% endfor %}
-                    {% endfor %}
-                    <input class="btn btn-primary mt-4" type="submit" value="Đăng kí">
-                </form>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form class="form" method="post">
+                {% csrf_token %}
+                <h2>Đăng kí</h2>
+                {% for field in form %}
+                <label>{{ field.label_tag }}</label>
+                <p>{{ field }}</p>
+                {% for error in field.errors %}
+                <small style="color: red">{{ error }}</small>
+                {% endfor %}
+                {% endfor %}
+                <input class="btn btn-primary mt-4" type="submit" value="Đăng kí">
+            </form>
         </div>
     </div>
+</div>
 {% endblock %}
