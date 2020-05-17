@@ -20,7 +20,7 @@
                         <div class="home_content">
                             <div class="home_title">Smart Phones<span>.</span></div>
                             <div class="home_text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p>
+                                <p>Hướng tới tương lai</p>
                             </div>
                         </div>
                     </div>
@@ -45,8 +45,8 @@
             <div class="col-lg-6">
                 <div class="details_content">
                     <div class="details_name">{{product.name}}</div>
-                    <div class="details_discount">{{product.price }}</div>
-                    <div class="details_price">{{product.price }}</div>
+                    {% comment %} <div class="details_discount">{{product.price }}</div> {% endcomment %}
+                    <div class="details_price">{{product.price }} Đ</div>
 
                     <!-- In Stock -->
                     <div class="in_stock_container">
@@ -59,15 +59,15 @@
 
                     <!-- Product Quantity -->
                     <div class="product_quantity_container">
-                        <div class="product_quantity clearfix">
+                        {% comment %} <div class="product_quantity clearfix">
                             <span>Sl</span>
                             <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
                             <div class="quantity_buttons">
                                 <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
                                 <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
                             </div>
-                        </div>
-                        <div class="button cart_button"><a href="{% url 'add2Cart'  product.id %}">Add to cart</a></div>
+                        </div> {% endcomment %}
+                        <div class="button cart_button"><a href="{% url 'add2Cart'  product.id %}">Thêm vào giỏ hàng</a></div>
                     </div>
 
                     <!-- Share -->
@@ -104,7 +104,7 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <div class="products_title">Related Products</div>
+                <div class="products_title">Sản phẩm liên quan</div>
             </div>
         </div>
         <div class="row">
@@ -112,7 +112,17 @@
 
                 <div class="product_grid">
 
-                    <!-- Product -->
+                    {% for i in related %}
+                    <div class="product">
+                        <div class="product_image"><img src= '..\media\{{ i.img }}' alt=""></div>
+                        <div class="product_content">
+                            <div class="product_title"><a href="{% url 'product'  i.id %}">{{ i.name }}</a></div>
+                            <div class="product_price">{{ i.price }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    {% comment %} <!-- Product -->
                     <div class="product">
                         <div class="product_image"><img src="{% static 'images/product_1.jpg' %}" alt=""></div>
                         <div class="product_extra product_new"><a href="categories.html">New</a></div>
@@ -148,7 +158,7 @@
                             <div class="product_title"><a href="product.html">Smart Phone</a></div>
                             <div class="product_price">$330</div>
                         </div>
-                    </div>
+                    </div> {% endcomment %}
 
                 </div>
             </div>

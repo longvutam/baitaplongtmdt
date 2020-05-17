@@ -4,6 +4,7 @@ from django.conf.urls import url
 from . import views
 urlpatterns = [
     path('', views.homeView, name = 'home'),
+    path('contact/', views.contact, name = 'contact'),
     path('<int:product_id>/', views.product, name = "product"),
     path('add-to-cart/<int:product_id>/', views.add2Cart, name='add2Cart'),
     path('cart/', views.cart, name = 'cart'),

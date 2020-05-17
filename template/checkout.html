@@ -41,7 +41,7 @@
                             {% for field in form %}
                                 <div>
                                     <label>{{ field.label_tag }}</label>
-                                    <p>{{ field }}</p>
+                                    {% comment %} <p>{{ field }}</p> {% endcomment %}
                                 </div>
                             {% endfor %}
                             <input class="button order_button" type="submit" value="Đặt hàng" >
